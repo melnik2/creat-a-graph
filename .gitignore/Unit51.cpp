@@ -2,13 +2,9 @@
 #include <vcl.h>
 #pragma hdrstop
 #include <fstream>       // read-save file
-//#include <math.h>       // ceil
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <cstdlib>
-//#include <cstring>
-//#include <ComObj.hpp>
 #include <utilcls.h>
 #include<algorithm>
 
@@ -17,6 +13,7 @@
 #pragma package(smart_init)
 #pragma link "sDialogs"
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
 
 using namespace std;
@@ -75,21 +72,7 @@ for (int i=0; i<8; i++){
 func1(i);
 ComboBox1->Items->Add(stred1), ComboBox2->Items->Add(stred1);
 }
- /*
- for (int i=0; i<8; i++){
- func1(i);
- while ((strA1 =mExcel.OlePropertyGet("Cells", arr1n[i], stred1.c_str()).OlePropertyGet("Value")).Length()!=0) arr1n[i]++;
- --arr1n[i];
- }
-
- for (int i=0; i<9; i++){
- func1(i);
- ((TLabel*)Form1->Components[i])->Caption=stred1+" "+IntToStr(arr1n[i]);
- }
- */
-
  Memo1->Clear();
-
 }
 //---------------------------------------------------------------------------
 
@@ -116,7 +99,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   func2(ca1, ca2); //A B - idn
 
  mExcel = CreateOleObject("Excel.Application");
- //AnsiString FileName=GetCurrentDir()+"\\data5.xlsx";
  mExcel.OlePropertyGet("WorkBooks").OleProcedure("Open", FileName2.c_str());
  Label1->Caption="Excel open";
  ProgressBar1->Position=1;
@@ -377,47 +359,11 @@ int* func2(char a1, char a2){
   idn2=8;
   break;
   }
-
-  //return im1;
 }
-//---------------------------------------------------------------------------
 
-void func1(int i){
-  switch (i){
-  case 0:
-  stred1="A";
-  break;
-  case 1:
-  stred1="B";
-  break;
-  case 2:
-  stred1="C";
-  break;
-  case 3:
-  stred1="D";
-  break;
-  case 4:
-  stred1="E";
-  break;
-  case 5:
-  stred1="F";
-  break;
-  case 6:
-  stred1="G";
-  break;
-  case 7:
-  stred1="H";
-  break;
-default:
-break;
-  }
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::Open1Click(TObject *Sender)
 {
- //SelectDirectory(FileName1,TSelectDirOpts() << sdAllowCreate << sdPerformCreate << sdPrompt, 0);
-
 SelectDirectory("","",FileName1);
 sOpenDialog1->Execute();
 sOpenDialog1->InitialDir = FileName1;
@@ -429,7 +375,6 @@ FileName2=sOpenDialog1->FileName;
 void __fastcall TForm1::E1Click(TObject *Sender)
 {
 AnsiString excl1 = (AnsiString)mExcel;
-//empty() length()
 if (excl1!="") mExcel.OleProcedure("Quit");
  Form1->Close();
 }
