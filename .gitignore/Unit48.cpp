@@ -106,8 +106,6 @@ str3[i]=0;
 for (int i=0; i<8; i++){
 s3[i]=0;
  }
-//grn1=grn2=0;
-//delete [] iMark2;
 }
 
 void __fastcall TForm1::TrackBar1Change(TObject *Sender)
@@ -154,10 +152,10 @@ void __fastcall TForm1::TrackBar3Change(TObject *Sender)
 //---------------------------------------------------------------------------
 
 int func1(){
-ifstream file1 (FileName2.c_str()); //  "C:\\Users\\Freag2\\Documents\\si\\Project48.Grafic.Po_data_file_txt\\B15.txt", ios_base::in | ios_base::out
+ifstream file1 (FileName2.c_str());
 while((cd1 = file1.get())!= EOF){
 switch (cd1) {
-case '\t':  //getline() сканирует на предмет разделителя
+case '\t': 
 cnt1++;
 break;
 case '\n':
@@ -174,7 +172,6 @@ file1.close();
 
 void __fastcall TForm1::Open1Click(TObject *Sender)
 {
-//SelectDirectory(FileName1,TSelectDirOpts() << sdAllowCreate << sdPerformCreate << sdPrompt, 0);
 
 SelectDirectory("","",FileName1);
 sOpenDialog1->Execute();
@@ -187,13 +184,11 @@ FileName2=sOpenDialog1->FileName;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 
-//fp=fopen(FileName1.c_str(),"r");
-ifstream file3 (FileName2.c_str()); // "C:\\Users\\Freag2\\Documents\\si\\Project48.Grafic.Po_data_file_txt\\B15.txt"
+ifstream file3 (FileName2.c_str());
 if((file3)!=NULL)   Label1->Caption="File - OK";
 else Label1->Caption="File - BAD";
 file3.clear();
 file3.close();
-
 
 func1();
 
@@ -228,7 +223,7 @@ Label23->Caption=0.1*rw1;
 delete [] iMark1;
 int *iMark1 = new int [cnt1+cnt2+1];
 
-ifstream file2 (FileName2.c_str());  //  "C:\\Users\\Freag2\\Documents\\si\\Project48.Grafic.Po_data_file_txt\\B15.txt"
+ifstream file2 (FileName2.c_str());
 while((cd1 = file2.get())!= EOF){
 switch (cd1) {
 case '\t':
@@ -252,7 +247,7 @@ cx1[i]=0;
 
 break;
 default:
-cx1[cnt3]= cd1;  //case 1: value true 1 false 11
+cx1[cnt3]= cd1;
 cnt3++;
 break;
  }
@@ -302,7 +297,6 @@ s3[i]=0;
 
 void __fastcall TForm1::Exit1Click(TObject *Sender)
 {
- //mExcel.OleProcedure("Quit");
  Form1->Close();
 }
 //---------------------------------------------------------------------------
